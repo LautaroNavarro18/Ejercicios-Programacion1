@@ -66,7 +66,8 @@ else
 {
     Console.WriteLine("No se ingresaron datos.");
 }
-*/
+/
+EJERCICIO 1
 
 List<int> usuarios = new List<int>();
 int calificacion = 0;
@@ -106,3 +107,112 @@ if (usuarios.Count > 0)
     }
 }
 
+EJERCICIO 2
+
+List<string> alumnos = new List<string>();
+string curso = "";
+
+Console.WriteLine("Registrá alumnos ingresando el curso A, B o C.");
+Console.WriteLine("Presioná Enter sin escribir nada para terminar.\n");
+
+do
+{
+    Console.Write($"Alumno {alumnos.Count + 1} - Curso: ");
+    curso = Console.ReadLine();
+
+    if (curso == "")
+        break;
+
+    if (curso == "A" || curso == "a" || curso == "B" || curso == "b" || curso == "C" || curso == "c")
+        alumnos.Add(curso);
+    else
+        Console.WriteLine("Curso inválido, tiene que ser A, B o C.");
+
+} while (curso != "");
+
+if (alumnos.Count > 0)
+{
+    int A = 0;
+    int B = 0;
+    int C = 0;
+    for (int i = 0; i < alumnos.Count; i++)
+    {
+        if (alumnos[i] == "A" || alumnos[i] == "a") 
+            A++;
+        if (alumnos[i] == "B" || alumnos[i] == "b")
+            B++;
+        if (alumnos[i] == "C"|| alumnos[i] == "c")  
+            C++;
+    }
+    Console.WriteLine($"Curso A: {A}");
+    Console.WriteLine($"Curso B: {B}");
+    Console.WriteLine($"Curso C: {C}");
+}
+
+EJERCICIO 3 
+
+
+int[] num = new int[7];
+
+for (int i = 0; i < 7; i++)
+{
+    Console.Write($"Ingrese el número en la posición {i}: ");
+    num[i] = int.Parse(Console.ReadLine());
+}
+
+bool verificacion = true;
+
+for (int i = 0; i < num.Length/2; i++)
+{
+    if (num[i] != num[num.Length - 1 - i])
+    {
+        verificacion = false;
+        break;
+    }
+}
+
+if (verificacion == true)
+{
+    Console.WriteLine("El arreglo se lee igual de izquierda a derecha que de derecha a izquierda");
+}
+else
+{
+    Console.WriteLine("El arraeglo no se lee igual");
+}
+
+EJERCICIO 4
+*/
+List<int> num = new List<int>();
+string num1 = "";
+
+Console.WriteLine("Ingresá números enteros.");
+Console.WriteLine("Presioná Enter sin escribir nada para terminar.\n");
+
+do
+{
+    Console.Write($"Número {num.Count + 1}: ");
+    num1 = Console.ReadLine();
+
+    if (num1 == "")
+        break;
+
+    num.Add(int.Parse(num1));
+
+} while (num1 != "");
+
+Console.WriteLine("Lista sin valores duplicados: \n");
+
+for (int i = 0; i < num.Count; i++)
+{
+    for (int j = i+1; j < num.Count; j++)
+    {
+        if (num[i] == num[j])
+        {
+            num.Remove(num[j]);
+            j--; 
+        }
+    }
+}
+
+for (int i = 0; i < num.Count; i++)
+    Console.WriteLine(num[i]);
